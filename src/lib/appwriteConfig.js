@@ -1,11 +1,9 @@
-import { Client, Databases, Query, TablesDB } from "appwrite";
+import { Client, Query, TablesDB } from "appwrite";
 
-const client = new Client();
+const projectId = import.meta.env.VITE_APPWRITE_PROJECT_ID;
+const endpoint = import.meta.env.VITE_APPWRITE_ENDPOINT;
 
-export const databses = new Databases(client);
+const client = new Client().setEndpoint(endpoint).setProject(projectId);
+const tablesDB = new TablesDB(client);
 
-client
-  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
-  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID);
-
-export default client;
+export { client, tablesDB };
