@@ -21,12 +21,11 @@ const MessageInput = ({ onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="flex mx-auto items-end gap-1 md:w-1/2 space-x-3 mt-4"
+      className="flex mx-auto items-end gap-1 md:w-1/2 space-x-3"
     >
       <div className="grow">
-        <textarea
+        <input
           {...register("body", {
-            required: "Message cannot be empty",
             minLength: {
               value: 1,
               message: "Message must contain at least 1 character.",
@@ -34,11 +33,12 @@ const MessageInput = ({ onSubmit }) => {
           })}
           name="body"
           id="body"
-          rows="1"
           placeholder="Type your message here..."
           className="w-full p-4 rounded-lg resize-none 
             focus:ring-2 focus:ring-[var(--themeColorMain)] focus:border-transparent 
             text-[var(--textColorMain)] border-[var(--borderColor2)] bg-(--secondaryBgColor)"
+          autoComplete="off"
+          autoFocus="true"
         />
         {errors.body && (
           <p className="mt-1 text-sm text-red-400">{errors.body.message}</p>
@@ -54,7 +54,7 @@ const MessageInput = ({ onSubmit }) => {
         {isSubmitting ? (
           <span className="text-white">Sending...</span>
         ) : (
-          <HiOutlinePaperAirplane className="h-6 w-6 p-0 max-w-fit  text-white transform rotate-240 -mt-1 -mr-1" />
+          <HiOutlinePaperAirplane className="h-6 w-6 p-0 max-w-fit  text-white transform rotate-40 -mt-1 -mr-1" />
         )}
       </button>
     </form>
