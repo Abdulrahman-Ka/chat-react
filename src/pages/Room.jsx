@@ -8,7 +8,7 @@ import { FiTrash2 } from "react-icons/fi";
 import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
 
-const DATABASEID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
+const DATABASEID = import.meta.env.VITE_APPWRITE_DATABASEID;
 
 const Room = () => {
   const [messages, setMessages] = useState([]);
