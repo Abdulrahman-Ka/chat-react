@@ -8,7 +8,7 @@ import { FiTrash2 } from "react-icons/fi";
 import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
 
-const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
+const DATABASEID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
 
 const Room = () => {
   const [messages, setMessages] = useState([]);
@@ -21,10 +21,8 @@ const Room = () => {
 
   const handleNewMessage = async (data) => {
     try {
-      // let payload =
-
       await tablesDB.createRow({
-        databaseId: DATABASE_ID,
+        databaseId: DATABASEID,
         tableId: "mesaages",
         rowId: ID.unique(),
         data: {
@@ -45,7 +43,7 @@ const Room = () => {
   const getMessages = async () => {
     try {
       const promise = await tablesDB.listRows({
-        databaseId: DATABASE_ID,
+        databaseId: DATABASEID,
         tableId: "mesaages",
         queries: [Query.orderDesc("$createdAt"), Query.limit(10)],
       });
@@ -65,7 +63,7 @@ const Room = () => {
   const deleteMessage = async (id) => {
     try {
       await tablesDB.deleteRow({
-        databaseId: DATABASE_ID,
+        databaseId: DATABASEID,
         tableId: "mesaages",
         rowId: id,
       });
