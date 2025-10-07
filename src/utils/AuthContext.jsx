@@ -1,12 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Spinner } from "flowbite-react";
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { account } from "../lib/appwriteConfig";
 import { useNavigate } from "react-router";
 import { ID } from "appwrite";

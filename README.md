@@ -13,7 +13,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## Live Demo
 
-<!-- - [Live Link](https://chat-react.pages.dev/) -->
+- [Live Link](https://d9b5b7d1.chat-react.pages.dev/)
 
 ## Test
 

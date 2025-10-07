@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { client, tablesDB } from "../lib/appwriteConfig";
-import MessageSkeleton from "../../MessageSkeleton";
+import MessageSkeleton from "../components/MessageSkeleton";
 import ErrorComponent from "../components/ErrorComponent";
 import MessageInput from "../components/MessageInput";
 import { ID, Query } from "appwrite";
