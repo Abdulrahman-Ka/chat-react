@@ -3,12 +3,11 @@ import { client, tablesDB } from "../lib/appwriteConfig";
 import MessageSkeleton from "../components/MessageSkeleton";
 import ErrorComponent from "../components/ErrorComponent";
 import MessageInput from "../components/MessageInput";
-import { ID, Query } from "appwrite";
+import { ID, Permission, Query, Role } from "appwrite";
 import { FiTrash2 } from "react-icons/fi";
 import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
-
-const DATABASEID = import.meta.env.VITE_APPWRITE_DATABASEID;
+import { DATABASEID } from "../lib/appwriteConfig";
 
 const Room = () => {
   const [messages, setMessages] = useState([]);
@@ -20,6 +19,8 @@ const Room = () => {
   const { user } = useAuth();
 
   const handleNewMessage = async (data) => {
+    let permissions = [Permission.write(Role.user(user.$id))];
+
     try {
       await tablesDB.createRow({
         databaseId: DATABASEID,
@@ -30,6 +31,7 @@ const Room = () => {
           username: user.name,
           user_id: user.$id,
         },
+        permissions: permissions,
       });
     } catch (error) {
       console.error("Error sending message: ", error);
@@ -134,7 +136,10 @@ const Room = () => {
                     }}
                     className="text-2xl focus:outline-none focus:text-red-600  hover:text-red-600"
                   >
-                    <FiTrash2 className="focus:outline-none" />
+                    {message.$permissions.includes(
+                      // eslint-disable-next-line no-useless-escape
+                      `delete(\"user:${user.$id}\")`
+                    ) && <FiTrash2 className="focus:outline-none" />}
                   </button>
                 </div>
 
