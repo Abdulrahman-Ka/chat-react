@@ -7,7 +7,7 @@ import { ID, Permission, Query, Role } from "appwrite";
 import { FiTrash2 } from "react-icons/fi";
 import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
-import { DATABASEID } from "../lib/appwriteConfig";
+import { DATABASE_ID } from "../lib/appwriteConfig";
 
 const Room = () => {
   const [messages, setMessages] = useState([]);
@@ -23,7 +23,7 @@ const Room = () => {
 
     try {
       await tablesDB.createRow({
-        databaseId: DATABASEID,
+        databaseId: DATABASE_ID,
         tableId: "mesaages",
         rowId: ID.unique(),
         data: {
@@ -45,7 +45,7 @@ const Room = () => {
   const getMessages = async () => {
     try {
       const promise = await tablesDB.listRows({
-        databaseId: DATABASEID,
+        databaseId: DATABASE_ID,
         tableId: "mesaages",
         queries: [Query.orderDesc("$createdAt"), Query.limit(10)],
       });
@@ -65,7 +65,7 @@ const Room = () => {
   const deleteMessage = async (id) => {
     try {
       await tablesDB.deleteRow({
-        databaseId: DATABASEID,
+        databaseId: DATABASE_ID,
         tableId: "mesaages",
         rowId: id,
       });

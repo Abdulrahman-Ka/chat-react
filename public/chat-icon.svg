@@ -1,0 +1,18 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path 
+    fill="rgba(27, 27, 39, 1)" 
+    d="M128 24C65.55 24 16 73.55 16 136c0 30.64 12.3 58.33 32.22 78.43l-4.57 32.14a4.11 4.11 0 005.15 4.86l33.88-13.63A127.63 127.63 0 00128 248c62.45 0 112-49.55 112-112S190.45 24 128 24z" 
+    opacity="0.95"
+  />
+
+  <circle cx="128" cy="128" r="16" fill="#BF125D"/>
+  
+  <!-- الخط الأفقي -->
+  <ellipse cx="128" cy="128" rx="80" ry="32" stroke="#BF125D" stroke-width="8" />
+  
+  <!-- الخط المائل الأول (يمين-أعلى/يسار-أسفل) -->
+  <ellipse cx="128" cy="128" rx="80" ry="32" transform="rotate(60 128 128)" stroke="#BF125D" stroke-width="8" />
+  
+  <!-- الخط المائل الثاني (يسار-أعلى/يمين-أسفل) -->
+  <ellipse cx="128" cy="128" rx="80" ry="32" transform="rotate(-60 128 128)" stroke="#BF125D" stroke-width="8" />
+</svg>
